@@ -8,6 +8,7 @@
 | [tdd.md](./tdd.md) | TDD 方針（氷山パターン、テスト仕様書） |
 | [thin-ddd.md](./thin-ddd.md) | 薄い DDD（Controller / Service / Repository / Validation） |
 | [git-rule.md](./git-rule.md) | gitの運用について） |
+| [versioning-rule.md](./versioning-rule.md) | バージョンの運用方法について |
 | doc_rule.md | 本ファイル |
 
 プロダクト要件の正本は [../main.md](../main.md) / [../specs/usecase.md](../specs/usecase.md)。
