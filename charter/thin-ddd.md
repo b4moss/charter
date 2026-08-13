@@ -82,7 +82,6 @@ Controller層の責務は、ユースケースの実現であり、ここで具�
 
 ここでの命名も、`UserSignupAccountService()`等が適切である。
 
-本プロジェクト例: トピック割当、レコメンドスコア、RSSパース、Readability 取得、URL正規化のオーケストレーション。
 
 ## Repository層
 
@@ -111,11 +110,14 @@ Controller層の責務は、ユースケースの実現であり、ここで具�
 - bulkCreate
 - bulkUpdate
 - bulkDelete
+- Duplicate
 - Search
   - カラムの指定が可能
   - クエリの指定が可能
   - 一般的な条件の指定が可能（`eq`,`lg`,`gt`など）
   - それらが複合して検索できること 
+
+**現在進行中** : [b4moss/crudian](https://github.com/b4moss/crudian)にて、PHP/Node.js/Bun/Goの各ライブラリが開発中。
 
 ----
 
