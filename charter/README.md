@@ -1,18 +1,20 @@
 # 憲章（charter）
 
-このプロジェクトで守る開発ルール。[doc_rule.md](../doc_rule.md) 参照。  
+各プロジェクトで守る開発ルール。[doc-rule.md](./doc-rule.md) 参照。  
 改訂はあり得るが、**`_archived` へは移さない**（履歴は git または版注記）。
+
+各プロジェクトでは本リポジトリの内容を `docs/charter/` に置く。プロダクト固有の上書きがある場合は、そのプロジェクトの docs に別ファイルで明示する。
 
 | 文書 | 内容 |
 |------|------|
 | [tdd.md](./tdd.md) | TDD 方針（氷山パターン、テスト仕様書） |
 | [thin-ddd.md](./thin-ddd.md) | 薄い DDD（Controller / Service / Repository / Validation） |
-| [git-rule.md](./git-rule.md) | gitの運用について） |
+| [git-rule.md](./git-rule.md) | git の運用について |
 | [versioning-rule.md](./versioning-rule.md) | バージョンの運用方法について |
 | [doc-rule.md](./doc-rule.md) | ドキュメント運用方針 |
 | README.md | 本ドキュメント |
 
-プロダクト要件の正本は [../main.md](../main.md) / [../specs/usecase.md](../specs/usecase.md)。
+プロダクト要件の正本は、各プロジェクトの `docs/main.md` および `docs/specs/` とする。憲章には詰め込まない。
 
 ## 適用範囲
 
