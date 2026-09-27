@@ -12,15 +12,15 @@ timestamp: 2026-08-13T14:53:50Z
 
 この憲章は、合同会社 知的・自転車のOSS部門によって[ホスト](https://github.com/b4moss/charter)されています。
 
-各プロジェクトには、この憲章リポジトリの`docs`ブランチをルートに展開し、共有します。
+各プロジェクトには、この憲章リポジトリ **`main` ブランチの `docs/`**（OKF v0.1）を共有します。かつての `docs` 専用ブランチは使いません。
 
 共有の仕方は、プロジェクトに応じて適切なものを以下から選びます。
 
-1. charter を `remote` に追加し、`charter/docs` をマージ。
-2. charter を、`.gitsubmodule` で追加。
-3. charter を `remote` に追加し、`subtree` で呼び出し。
+1. charter を `remote` に追加し、`charter/main` をマージ（共有対象は `docs/`）。
+2. charter を submodule で追加。
+3. charter を `remote` に追加し、`subtree` で `docs/` を取り込む。
 
-どの方式を取るかは、プロジェクトに応じてPOが判断をします。
+どの方式を取るかは、プロジェクトに応じてPOが判断をします。具体的なコマンド例はリポジトリルートの [README.md](../../README.md) を参照。
 
 ## 憲章の更新
 
@@ -42,6 +42,7 @@ timestamp: 2026-08-13T14:53:50Z
 
 | 文書 | 内容 |
 |------|------|
+| [okf/](./okf/) | OKF v0.1（知識バンドルの版定義・執筆サンプル） |
 | [tdd.md](./tdd.md) | TDD 方針（氷山パターン、テスト仕様書） |
 | [thin-ddd.md](./thin-ddd.md) | 薄い DDD（Controller / Service / Repository / Validation） |
 | [git-rule.md](./git-rule.md) | git の運用について |
