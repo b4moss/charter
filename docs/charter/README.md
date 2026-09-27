@@ -50,7 +50,7 @@ timestamp: 2026-08-13T14:53:50Z
 | [doc-rule.md](./doc-rule.md) | ドキュメント運用方針 |
 | README.md | 本ドキュメント |
 
-プロダクト要件の正本は、各プロジェクトの `docs/main.md` および `docs/specs/` とする。憲章には詰め込まない。
+プロダクト要件の正本は、各プロジェクトの `docs/README.md`（pillar）および `docs/specs/` とする。`docs/index.md` は OKF 索引のみ。憲章には詰め込まない。
 
 ## 適用範囲
 
