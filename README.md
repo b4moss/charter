@@ -26,11 +26,21 @@ git subtree add --prefix=docs charter main --squash
 git submodule add https://github.com/b4moss/charter.git vendor/charter
 ```
 
-詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。OKF の定義と執筆サンプルは [`docs/charter/okf/`](docs/charter/okf/)。
+詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。
+
+## 消費者リポジトリへの自動同期
+
+Release 公開時（または手動 `workflow_dispatch`）に、固定リストのリポジトリへ `docs/charter/` を配布して PR を作成します。
+
+- ワークフロー: [`.github/workflows/sync-charter.yml`](.github/workflows/sync-charter.yml)
+- ターゲット一覧: [`scripts/sync-charter/targets.yaml`](scripts/sync-charter/targets.yaml)
+- 運用手順: [`scripts/sync-charter/README.md`](scripts/sync-charter/README.md)
+
+必要な secrets: `SYNC_GITHUB_TOKEN`, `SYNC_GITEA_TOKEN`
 
 # charter の内容について
 
-- 憲章本文・OKF・ルール類はすべて `docs/` 配下で管理する。
+- 憲章本文・ルール類はすべて `docs/` 配下で管理する。
 - リポジトリルートの `README.md` / `LICENSE` はこのリポジトリ自体の説明用である。
 
 # ライセンス

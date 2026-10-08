@@ -1,0 +1,97 @@
+# Fixed list of repositories that consume docs/charter/ from this repo.
+# Update this file when adding/removing consumers.
+#
+# base: PR target branch (prefer main; use develop only when main does not exist).
+
+github:
+  - repo: b4moss/ATS
+    base: main
+  - repo: b4moss/auto-add-search-console
+    base: main
+  - repo: b4moss/bwsf
+    base: main
+  - repo: b4moss/cachian
+    base: main
+  - repo: b4moss/capetown-cms
+    base: main
+  - repo: b4moss/cloudybg
+    base: main
+  - repo: b4moss/crudian
+    base: main
+  - repo: b4moss/crudian-simple-todo
+    base: main
+  - repo: b4moss/d4run
+    base: main
+  - repo: b4moss/envlt
+    base: main
+  - repo: b4moss/es4
+    base: main
+  - repo: b4moss/existian
+    base: main
+  - repo: b4moss/gantt
+    base: main
+  - repo: b4moss/git-template
+    base: main
+  - repo: b4moss/harenohi
+    base: main
+  - repo: b4moss/hermit-crumb
+    base: main
+  - repo: b4moss/hyogen-md
+    base: main
+  - repo: b4moss/iron-rule
+    base: main
+  - repo: b4moss/janitor
+    base: main
+  - repo: b4moss/jp-local-gov-id
+    base: main
+  - repo: b4moss/jp-postal-code
+    base: main
+  - repo: b4moss/median
+    base: main
+  - repo: b4moss/mpa-html-site-starter
+    base: main
+  - repo: b4moss/necromancer
+    base: main
+  - repo: b4moss/nook
+    base: main
+  - repo: b4moss/orgboss
+    base: main
+  - repo: b4moss/oss-b4m-jp
+    base: develop
+  - repo: b4moss/retryan
+    base: main
+  - repo: b4moss/sasip
+    base: main
+  - repo: b4moss/shardian
+    base: main
+  - repo: b4moss/slz
+    base: main
+  - repo: b4moss/ss-cachian
+    base: main
+  - repo: b4moss/strata
+    base: main
+  - repo: b4moss/the-wheels
+    base: main
+  - repo: b4moss/veetio
+    base: main
+  - repo: b4moss/versatalians
+    base: main
+  - repo: b4moss/yoshinani-form-schema
+    base: main
+
+gitea:
+  # host defaults to https://git.b4m.jp (override with SYNC_GITEA_URL)
+  - repo: b4m-inner/casper
+    base: main
+  - repo: b4m-inner/jp-org-parse
+    base: develop
+  - repo: b4m-product/ofeedio
+    base: develop
+  - repo: b4m-r-and-d/iron-rule
+    base: main
+  - repo: b4m-r-and-d/kowiki
+    base: main
+  - repo: kohki/digit-stampede
+    base: main
+  - repo: kohki/sleeves
+    base: main
