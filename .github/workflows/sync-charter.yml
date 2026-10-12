@@ -1,0 +1,110 @@
+name: Sync charter to consumers
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Tag/ref to distribute (e.g. v1.3.0). Empty = current ref / release tag."
+        required: false
+        type: string
+      dry_run:
+        description: "Detect only; do not push or open PRs"
+        required: false
+        type: boolean
+        default: false
+      only_forge:
+        description: "Limit forge (github | gitea | all)"
+        required: false
+        type: choice
+        options:
+          - all
+          - github
+          - gitea
+        default: all
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-charter-${{ github.event.release.tag_name || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve version
+        id: meta
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+          elif [ -n "${{ inputs.version }}" ]; then
+            VERSION="${{ inputs.version }}"
+          else
+            VERSION="${GITHUB_REF_NAME}"
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Resolved version: ${VERSION}"
+
+      - name: Checkout charter at version
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.meta.outputs.version }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install pyyaml
+
+      - name: Sync to consumer repositories
+        env:
+          SYNC_GITHUB_TOKEN: ${{ secrets.SYNC_GITHUB_TOKEN }}
+          SYNC_GITEA_TOKEN: ${{ secrets.SYNC_GITEA_TOKEN }}
+          SYNC_GITEA_URL: ${{ vars.SYNC_GITEA_URL }}
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --targets scripts/sync-charter/targets.yaml
+            --source docs/charter
+            --charter-git .
+            --version "${{ steps.meta.outputs.version }}"
+            --summary charter-sync-summary.md
+          )
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            ARGS+=(--dry-run)
+          fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.only_forge }}" != "all" ] && [ -n "${{ inputs.only_forge }}" ]; then
+            ARGS+=(--only-forge "${{ inputs.only_forge }}")
+          fi
+          python3 scripts/sync-charter/sync.py "${ARGS[@]}"
+
+      - name: Upload sync report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: charter-sync-${{ steps.meta.outputs.version }}
+          path: |
+            charter-sync-summary.md
+            charter-sync-local-mods.json
+          if-no-files-found: warn
+
+      - name: Write job summary
+        if: always()
+        run: |
+          if [ -f charter-sync-summary.md ]; then
+            cat charter-sync-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f charter-sync-local-mods.json ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "## Local modifications JSON" >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat charter-sync-local-mods.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
