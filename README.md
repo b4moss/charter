@@ -30,13 +30,13 @@ git submodule add https://github.com/b4moss/charter.git vendor/charter
 
 ## 消費者リポジトリへの自動同期
 
-Release 公開時（または手動 `workflow_dispatch`）に、固定リストのリポジトリへ `docs/charter/` を配布して PR を作成します。
+配信機械（`targets.yaml` / `sync.py` / Gitea ホスト・org 名）は公開リポから外し、内部 Gitea **`b4m-inner/charter-ops`** で運用します。
 
-- ワークフロー: [`.github/workflows/sync-charter.yml`](.github/workflows/sync-charter.yml)
-- ターゲット一覧: [`scripts/sync-charter/targets.yaml`](scripts/sync-charter/targets.yaml)
-- 運用手順: [`scripts/sync-charter/README.md`](scripts/sync-charter/README.md)
+- 運用リポ: https://git.b4m.jp/b4m-inner/charter-ops
+- 憲章本文の正本は引き続きこの公開リポ（`docs/charter/`）
+- 履歴の書き換えはしない（過去コミットに targets が残るのは許容）
 
-必要な secrets: `SYNC_GITHUB_TOKEN`, `SYNC_GITEA_TOKEN`
+各プロダクトへの推奨参照は `AGENTS.md` ポインタ（移動タグ `v1`）。一斉コピー配信は段階的に縮小します。
 
 # charter の内容について
 
