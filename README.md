@@ -26,7 +26,14 @@ git subtree add --prefix=docs charter main --squash
 git submodule add https://github.com/b4moss/charter.git vendor/charter
 ```
 
-詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。
+詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。  
+エージェント向け要約: [`docs/charter/agent-brief.md`](docs/charter/agent-brief.md)。  
+版と移動タグ `v1`: [`docs/charter/release-and-moving-tag.md`](docs/charter/release-and-moving-tag.md)。
+
+## ポインタ方式（推奨・移行中）
+
+各プロダクトリポは `AGENTS.md` に短いポインタ（移動タグ `v1`）だけを置き、本文は本リポの raw URL から読む。  
+**`v1` タグの作成・移動は PO の明示指示後**（マージ後に実施。エージェントは打たない）。
 
 ## 消費者リポジトリへの自動同期
 
