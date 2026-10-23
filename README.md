@@ -30,11 +30,10 @@ git submodule add https://github.com/b4moss/charter.git vendor/charter
 
 ## 消費者リポジトリへの自動同期
 
-配信機械（`targets.yaml` / `sync.py` / Gitea ホスト・org 名）は公開リポから外し、内部 Gitea **`b4m-inner/charter-ops`** で運用します。
+配信機械（targets / sync スクリプト / 内部 forge のホスト・org 名）は **公開リポには置きません**。内部の運用リポ（org `b4m-inner` / リポ名 `charter-ops`）で管理します。URL・トークンは公開ドキュメントに書きません。
 
-- 運用リポ: https://git.b4m.jp/b4m-inner/charter-ops
 - 憲章本文の正本は引き続きこの公開リポ（`docs/charter/`）
-- 履歴の書き換えはしない（過去コミットに targets が残るのは許容）
+- 履歴の書き換えはしない（過去コミットに内部リポ名が残るのは許容）
 
 各プロダクトへの推奨参照は `AGENTS.md` ポインタ（移動タグ `v1`）。一斉コピー配信は段階的に縮小します。
 
