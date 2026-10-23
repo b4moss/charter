@@ -26,17 +26,25 @@ git subtree add --prefix=docs charter main --squash
 git submodule add https://github.com/b4moss/charter.git vendor/charter
 ```
 
-詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。
+詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。  
+エージェント向け要約: [`docs/charter/agent-brief.md`](docs/charter/agent-brief.md)。  
+版と移動タグ `v1`: [`docs/charter/release-and-moving-tag.md`](docs/charter/release-and-moving-tag.md)。
 
-## 消費者リポジトリへの自動同期
+## ポインタ方式（推奨・移行中）
 
-Release 公開時（または手動 `workflow_dispatch`）に、固定リストのリポジトリへ `docs/charter/` を配布して PR を作成します。
+各プロダクトリポは `AGENTS.md` に短いポインタ（移動タグ `v1`）だけを置き、本文は本リポの raw URL から読む。  
+**`v1` タグの作成・移動は PO の明示指示後**（マージ後に実施。エージェントは打たない）。
+
+## 消費者リポジトリへの自動同期（移行中）
+
+配信機械（`targets.yaml` / `sync.py` / Gitea ホスト情報）は内部 Gitea [`b4m-inner/charter-ops`](https://git.b4m.jp/b4m-inner/charter-ops) へ移管中です。  
+公開側からの削除は **別 PR**（履歴は書き換えない）。当面、以下はレガシーとして残っています。
 
 - ワークフロー: [`.github/workflows/sync-charter.yml`](.github/workflows/sync-charter.yml)
 - ターゲット一覧: [`scripts/sync-charter/targets.yaml`](scripts/sync-charter/targets.yaml)
 - 運用手順: [`scripts/sync-charter/README.md`](scripts/sync-charter/README.md)
 
-必要な secrets: `SYNC_GITHUB_TOKEN`, `SYNC_GITEA_TOKEN`
+必要な secrets: `SYNC_GITHUB_TOKEN`, `SYNC_GITEA_TOKEN`（値はドキュメントに書かない）
 
 # charter の内容について
 

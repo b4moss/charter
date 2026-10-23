@@ -42,10 +42,12 @@ timestamp: 2026-10-08
 
 | 文書 | 内容 |
 |------|------|
-| [tdd.md](./tdd.md) | TDD 方針（氷山パターン、テスト仕様書） |
-| [thin-ddd.md](./thin-ddd.md) | 薄い DDD（Controller / Service / Repository / Validation） |
-| [git-rule.md](./git-rule.md) | git の運用について |
-| [versioning-rule.md](./versioning-rule.md) | バージョンの運用方法について |
+| [tdd.md](./tech/tdd.md) | TDD 方針（氷山パターン、テスト仕様書） |
+| [thin-ddd.md](./tech/thin-ddd.md) | 薄い DDD（Controller / Service / Repository / Validation） |
+| [git-rule.md](./tech/git-rule.md) | git の運用について |
+| [versioning-rule.md](./tech/versioning-rule.md) | バージョンの運用方法について |
+| [ci-cd.md](./tech/ci-cd.md) | CI/CD 方針 |
+| [spa-architecture.md](./tech/spa-architecture.md) | SPA 開発の原則 |
 | [doc-rule.md](./doc-rule.md) | ドキュメント運用方針 |
 | README.md | 本ドキュメント |
 
