@@ -37,7 +37,7 @@ git submodule add https://github.com/b4moss/charter.git vendor/charter
 
 ## 消費者リポジトリへの自動同期（移行中）
 
-配信機械（`targets.yaml` / `sync.py` / Gitea ホスト情報）は内部 Gitea [`b4m-inner/charter-ops`](https://git.b4m.jp/b4m-inner/charter-ops) へ移管中です。  
+配信機械（targets / sync / 内部 forge 情報）は内部運用リポ（org `b4m-inner` / `charter-ops`）へ移管中です。ホスト URL・トークンは公開ドキュメントに書きません。  
 公開側からの削除は **別 PR**（履歴は書き換えない）。当面、以下はレガシーとして残っています。
 
 - ワークフロー: [`.github/workflows/sync-charter.yml`](.github/workflows/sync-charter.yml)
