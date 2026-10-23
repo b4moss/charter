@@ -35,16 +35,14 @@ git submodule add https://github.com/b4moss/charter.git vendor/charter
 各プロダクトリポは `AGENTS.md` に短いポインタ（移動タグ `v1`）だけを置き、本文は本リポの raw URL から読む。  
 **`v1` タグの作成・移動は PO の明示指示後**（マージ後に実施。エージェントは打たない）。
 
-## 消費者リポジトリへの自動同期（移行中）
+## 消費者リポジトリへの自動同期
 
-配信機械（targets / sync / 内部 forge 情報）は内部運用リポ（org `b4m-inner` / `charter-ops`）へ移管中です。ホスト URL・トークンは公開ドキュメントに書きません。  
-公開側からの削除は **別 PR**（履歴は書き換えない）。当面、以下はレガシーとして残っています。
+配信機械（targets / sync スクリプト / 内部 forge のホスト・org 名）は **公開リポには置きません**。内部の運用リポ（org `b4m-inner` / リポ名 `charter-ops`）で管理します。URL・トークンは公開ドキュメントに書きません。
 
-- ワークフロー: [`.github/workflows/sync-charter.yml`](.github/workflows/sync-charter.yml)
-- ターゲット一覧: [`scripts/sync-charter/targets.yaml`](scripts/sync-charter/targets.yaml)
-- 運用手順: [`scripts/sync-charter/README.md`](scripts/sync-charter/README.md)
+- 憲章本文の正本は引き続きこの公開リポ（`docs/charter/`）
+- 履歴の書き換えはしない（過去コミットに内部リポ名が残るのは許容）
 
-必要な secrets: `SYNC_GITHUB_TOKEN`, `SYNC_GITEA_TOKEN`（値はドキュメントに書かない）
+各プロダクトへの推奨参照は `AGENTS.md` ポインタ（移動タグ `v1`）。一斉コピー配信は段階的に縮小します。
 
 # charter の内容について
 
