@@ -2,47 +2,34 @@
 
 このリポジトリは、合同会社 知的・自転車で開発を行うリポジトリにおける、開発憲章です。
 
-共有する正本は **`main` ブランチの `docs/`** です（OKF v0.1）。かつての `docs` 専用ブランチは使わず、プロダクトは `main` 上の `docs/` を取り込みます。
+共有する正本は **`main` ブランチの `docs/`** です（OKF v0.1）。かつての `docs` 専用ブランチは使いません。
 
-- 取り込みは `git merge` / `git subtree` / `git submodule` のいずれでもよい（PO が判断）。
-- 取り込まれた先では、各プロダクトによって文言やディレクトリ構造の修正を許容します。
-- 取り込まれた先からこのリポジトリへの push は、原則として行いません。
+## 各リポでの参照方法
 
-## 取り込み方（例）
+各プロダクトリポは憲章本文をコピーせず、移動タグ **`v1`** を参照します。
 
-```shell
-# charter を取り込みたい先の git root にて
-git remote add charter https://github.com/b4moss/charter.git
-git fetch charter main
+- 各リポの `AGENTS.md` に「## 開発憲章（charter）」節を置く。
+- その節から、本リポの `v1` 上の [`agent-brief.md`](https://raw.githubusercontent.com/b4moss/charter/v1/docs/charter/agent-brief.md)（要約）と [`index.md`](https://raw.githubusercontent.com/b4moss/charter/v1/docs/charter/index.md)（詳細の入口）を参照する。
+- リポ固有の上書きがある場合は `docs/override-charter.md` に書く（憲章に反する場合はその範囲のみ優先）。
+- リポ内に `docs/charter/` のコピーは置かない。
 
-# 方式 A: main をマージ（共有対象は docs/。ルートの README/LICENSE は競合し得る）
-git merge charter/main --allow-unrelated-histories
+節の文面の例:
 
-# 方式 B: docs/ だけ subtree で取り込む
-git subtree add --prefix=docs charter main --squash
-# （既に docs/ がある場合は add ではなく pull を使う）
-
-# 方式 C: submodule として追加し、必要なら docs/ を参照・同期する
-git submodule add https://github.com/b4moss/charter.git vendor/charter
+```markdown
+## 開発憲章（charter）
+- 最上位の憲章はこのリポの外にあります。作業を始める前に必ず読むこと（毎回、キャッシュに頼らず取得）。
+  1. 要約: https://raw.githubusercontent.com/b4moss/charter/v1/docs/charter/agent-brief.md
+  2. 詳細（必要な文書だけ）: https://raw.githubusercontent.com/b4moss/charter/v1/docs/charter/index.md
+- 参照する版: `v1`（メジャー版）。PR 本文の先頭に、読んだ VERSION とコミット SHA 先頭 7 桁を 1 行で書くこと。例: `charter: 1.4.1 (47c94ee)`
+- 取得できない場合は、推測で進めず作業を止めて報告すること。
+- このリポ固有の上書きは `docs/override-charter.md` を優先する（憲章に反する場合はその範囲のみ）。
 ```
 
-詳細な共有方針は [`docs/charter/README.md`](docs/charter/README.md)。  
-エージェント向け要約: [`docs/charter/agent-brief.md`](docs/charter/agent-brief.md)。  
-版と移動タグ `v1`: [`docs/charter/release-and-moving-tag.md`](docs/charter/release-and-moving-tag.md)。
-
-## ポインタ方式（推奨・移行中）
-
-各プロダクトリポは `AGENTS.md` に短いポインタ（移動タグ `v1`）だけを置き、本文は本リポの raw URL から読む。  
 **`v1` タグの作成・移動は PO の明示指示後**（マージ後に実施。エージェントは打たない）。
 
-## 消費者リポジトリへの自動同期
-
-配信機械（targets / sync スクリプト / 内部 forge のホスト・org 名）は **公開リポには置きません**。内部の運用リポ（org `b4m-inner` / リポ名 `charter-ops`）で管理します。URL・トークンは公開ドキュメントに書きません。
-
-- 憲章本文の正本は引き続きこの公開リポ（`docs/charter/`）
-- 履歴の書き換えはしない（過去コミットに内部リポ名が残るのは許容）
-
-各プロダクトへの推奨参照は `AGENTS.md` ポインタ（移動タグ `v1`）。一斉コピー配信は段階的に縮小します。
+憲章本文: [`docs/charter/`](docs/charter/)。  
+エージェント向け要約: [`docs/charter/agent-brief.md`](docs/charter/agent-brief.md)。  
+版と移動タグ `v1`: [`docs/charter/release-and-moving-tag.md`](docs/charter/release-and-moving-tag.md)。
 
 # charter の内容について
 
